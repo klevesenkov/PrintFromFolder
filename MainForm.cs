@@ -16,5 +16,11 @@ namespace PrintFromFolder
         {
             InitializeComponent();
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Form settingsform = new SettingsForm();
+            settingsform.ShowDialog();
+        }
     }
 }
