@@ -240,9 +240,11 @@
             this.btnClearGridOfFiles.TabIndex = 17;
             this.btnClearGridOfFiles.Text = "Очистка таблицы";
             this.btnClearGridOfFiles.UseVisualStyleBackColor = true;
+            this.btnClearGridOfFiles.Click += new System.EventHandler(this.btnClearGridOfFiles_Click);
             // 
             // fsw
             // 
+            this.fsw.EnableRaisingEvents = true;
             this.fsw.NotifyFilter = System.IO.NotifyFilters.FileName;
             this.fsw.SynchronizingObject = this;
             this.fsw.Created += new System.IO.FileSystemEventHandler(this.fsw_Created);

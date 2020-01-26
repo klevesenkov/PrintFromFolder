@@ -86,42 +86,14 @@ namespace PrintFromFolder
                 Scan.PrinterName = lbPrinter.Text = printDialog1.PrinterSettings.PrinterName;
             }
         }
-
-        class scan
-        {
-            public  bool ScanOn;
-            public  string Path;
-            public  string PrinterName;            
-
-            public  void Start(FileSystemWatcher watcher)
-            {
-
-                try
-                {
-                    watcher.Path = Path;
-                    watcher.EnableRaisingEvents = true;
-                    ScanOn = true;
-                }
-                catch (System.IO.IOException e)
-                {
-                    MessageBox.Show(e.Message, "Ошибка", MessageBoxButtons.OK);
-                }
-
-
-            }
-
-            public  void Stop(FileSystemWatcher watcher)
-            {
-                ScanOn = false;
-                watcher.EnableRaisingEvents = false;
-
-            }
-           
-        }
-
         private void fsw_Created(object sender, FileSystemEventArgs e)
         {
             GridOfFiles.Rows.Add(e.Name, DateTime.Now.ToString());
+        }
+
+        private void btnClearGridOfFiles_Click(object sender, EventArgs e)
+        {
+            GridOfFiles.Rows.Clear();
         }
     }
 
