@@ -30,17 +30,19 @@
         {
             this.btnStartStopScan = new System.Windows.Forms.Button();
             this.lbScanState = new System.Windows.Forms.Label();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.pbxScan = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnChooseFolder = new System.Windows.Forms.Button();
+            this.lblFolder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxScan)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStartStopScan
             // 
             this.btnStartStopScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.btnStartStopScan.Location = new System.Drawing.Point(110, 39);
+            this.btnStartStopScan.Location = new System.Drawing.Point(106, 39);
             this.btnStartStopScan.Name = "btnStartStopScan";
-            this.btnStartStopScan.Size = new System.Drawing.Size(241, 52);
+            this.btnStartStopScan.Size = new System.Drawing.Size(245, 52);
             this.btnStartStopScan.TabIndex = 0;
             this.btnStartStopScan.Text = "Остановить сканирование";
             this.btnStartStopScan.UseVisualStyleBackColor = true;
@@ -57,17 +59,6 @@
             this.lbScanState.TabIndex = 1;
             this.lbScanState.Text = "Сканирование включено";
             // 
-            // btnSettings
-            // 
-            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.btnSettings.Location = new System.Drawing.Point(12, 394);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(340, 30);
-            this.btnSettings.TabIndex = 2;
-            this.btnSettings.Text = "Настройки";
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
             // pbxScan
             // 
             this.pbxScan.Image = global::PrintFromFolder.Properties.Resources.scan_off;
@@ -79,15 +70,54 @@
             this.pbxScan.TabIndex = 5;
             this.pbxScan.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.label1.Location = new System.Drawing.Point(12, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(226, 22);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Папка для сканирования:";
+            // 
+            // btnChooseFolder
+            // 
+            this.btnChooseFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnChooseFolder.Location = new System.Drawing.Point(12, 159);
+            this.btnChooseFolder.Name = "btnChooseFolder";
+            this.btnChooseFolder.Size = new System.Drawing.Size(134, 30);
+            this.btnChooseFolder.TabIndex = 7;
+            this.btnChooseFolder.Text = "Выбор папки";
+            this.btnChooseFolder.UseVisualStyleBackColor = true;
+            this.btnChooseFolder.Click += new System.EventHandler(this.btnChooseFolder_Click);
+            // 
+            // lblFolder
+            // 
+            this.lblFolder.AutoEllipsis = true;
+            this.lblFolder.AutoSize = true;
+            this.lblFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblFolder.Location = new System.Drawing.Point(16, 139);
+            this.lblFolder.MaximumSize = new System.Drawing.Size(330, 20);
+            this.lblFolder.Name = "lblFolder";
+            this.lblFolder.Size = new System.Drawing.Size(130, 17);
+            this.lblFolder.TabIndex = 8;
+            this.lblFolder.Text = "Папка не выбрана";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 436);
+            this.Controls.Add(this.lblFolder);
+            this.Controls.Add(this.btnChooseFolder);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pbxScan);
-            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.lbScanState);
             this.Controls.Add(this.btnStartStopScan);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(380, 475);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(380, 475);
             this.Name = "MainForm";
             this.Text = "Print from folder";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -98,11 +128,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnStartStopScan;
-        private System.Windows.Forms.Label lbScanState;
-        private System.Windows.Forms.Button btnSettings;
-        private System.Windows.Forms.PictureBox pbxScan;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnStartStopScan;
+        public System.Windows.Forms.Label lbScanState;
+        public System.Windows.Forms.PictureBox pbxScan;
+        public System.Windows.Forms.Button btnChooseFolder;
+        public System.Windows.Forms.Label lblFolder;
     }
 }
 
