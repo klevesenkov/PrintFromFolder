@@ -28,13 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnStartStopScan = new System.Windows.Forms.Button();
             this.lbScanState = new System.Windows.Forms.Label();
             this.pbxScan = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnChooseFolder = new System.Windows.Forms.Button();
             this.lblFolder = new System.Windows.Forms.Label();
+            this.lbPrinter = new System.Windows.Forms.Label();
+            this.btnChoosePrinter = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.GridOfFiles = new System.Windows.Forms.DataGridView();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateOfPrint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnClearGridOfFiles = new System.Windows.Forms.Button();
+            this.fsw = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.pbxScan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridOfFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fsw)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStartStopScan
@@ -103,25 +118,166 @@
             this.lblFolder.TabIndex = 8;
             this.lblFolder.Text = "Папка не выбрана";
             // 
+            // lbPrinter
+            // 
+            this.lbPrinter.AutoEllipsis = true;
+            this.lbPrinter.AutoSize = true;
+            this.lbPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lbPrinter.Location = new System.Drawing.Point(19, 234);
+            this.lbPrinter.MaximumSize = new System.Drawing.Size(330, 20);
+            this.lbPrinter.Name = "lbPrinter";
+            this.lbPrinter.Size = new System.Drawing.Size(138, 17);
+            this.lbPrinter.TabIndex = 11;
+            this.lbPrinter.Text = "Принтер не выбран";
+            // 
+            // btnChoosePrinter
+            // 
+            this.btnChoosePrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnChoosePrinter.Location = new System.Drawing.Point(15, 254);
+            this.btnChoosePrinter.Name = "btnChoosePrinter";
+            this.btnChoosePrinter.Size = new System.Drawing.Size(134, 30);
+            this.btnChoosePrinter.TabIndex = 10;
+            this.btnChoosePrinter.Text = "Выбор принтера";
+            this.btnChoosePrinter.UseVisualStyleBackColor = true;
+            this.btnChoosePrinter.Click += new System.EventHandler(this.btnChoosePrinter_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.label3.Location = new System.Drawing.Point(15, 208);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 22);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Принтер для печати:";
+            // 
+            // label2
+            // 
+            this.label2.AutoEllipsis = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label2.Location = new System.Drawing.Point(16, 309);
+            this.label2.MaximumSize = new System.Drawing.Size(330, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(188, 34);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Файлы для сканирования: \r\n*.doc, *.docx, *.pdf, *rtf.\r\n";
+            // 
+            // label4
+            // 
+            this.label4.AutoEllipsis = true;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label4.Location = new System.Drawing.Point(19, 364);
+            this.label4.MaximumSize = new System.Drawing.Size(330, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(279, 17);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Распечатанные файлы будут удаляться.\r\n";
+            // 
+            // label5
+            // 
+            this.label5.AutoEllipsis = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label5.Location = new System.Drawing.Point(19, 410);
+            this.label5.MaximumSize = new System.Drawing.Size(330, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(172, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Copyright [2020] [ilya klevesenkov]";
+            // 
+            // GridOfFiles
+            // 
+            this.GridOfFiles.AllowUserToAddRows = false;
+            this.GridOfFiles.AllowUserToDeleteRows = false;
+            this.GridOfFiles.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.GridOfFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridOfFiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FileName,
+            this.DateOfPrint});
+            this.GridOfFiles.Location = new System.Drawing.Point(373, 39);
+            this.GridOfFiles.Name = "GridOfFiles";
+            this.GridOfFiles.ReadOnly = true;
+            this.GridOfFiles.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.GridOfFiles.Size = new System.Drawing.Size(379, 356);
+            this.GridOfFiles.TabIndex = 15;
+            // 
+            // FileName
+            // 
+            this.FileName.Frozen = true;
+            this.FileName.HeaderText = "Имя файла";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FileName.Width = 200;
+            // 
+            // DateOfPrint
+            // 
+            this.DateOfPrint.Frozen = true;
+            this.DateOfPrint.HeaderText = "Дата и время печати";
+            this.DateOfPrint.Name = "DateOfPrint";
+            this.DateOfPrint.ReadOnly = true;
+            this.DateOfPrint.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.DateOfPrint.Width = 150;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.label6.Location = new System.Drawing.Point(419, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(291, 22);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Файлы, отправленные на печать.";
+            // 
+            // btnClearGridOfFiles
+            // 
+            this.btnClearGridOfFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnClearGridOfFiles.Location = new System.Drawing.Point(618, 401);
+            this.btnClearGridOfFiles.Name = "btnClearGridOfFiles";
+            this.btnClearGridOfFiles.Size = new System.Drawing.Size(134, 30);
+            this.btnClearGridOfFiles.TabIndex = 17;
+            this.btnClearGridOfFiles.Text = "Очистка таблицы";
+            this.btnClearGridOfFiles.UseVisualStyleBackColor = true;
+            // 
+            // fsw
+            // 
+            this.fsw.NotifyFilter = System.IO.NotifyFilters.FileName;
+            this.fsw.SynchronizingObject = this;
+            this.fsw.Created += new System.IO.FileSystemEventHandler(this.fsw_Created);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 436);
+            this.ClientSize = new System.Drawing.Size(764, 436);
+            this.Controls.Add(this.btnClearGridOfFiles);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.GridOfFiles);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbPrinter);
+            this.Controls.Add(this.btnChoosePrinter);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblFolder);
             this.Controls.Add(this.btnChooseFolder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbxScan);
             this.Controls.Add(this.lbScanState);
             this.Controls.Add(this.btnStartStopScan);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(380, 475);
+            this.MaximumSize = new System.Drawing.Size(780, 475);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(380, 475);
+            this.MinimumSize = new System.Drawing.Size(780, 475);
             this.Name = "MainForm";
             this.Text = "Print from folder";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxScan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridOfFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fsw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +290,18 @@
         public System.Windows.Forms.PictureBox pbxScan;
         public System.Windows.Forms.Button btnChooseFolder;
         public System.Windows.Forms.Label lblFolder;
+        public System.Windows.Forms.Label lbPrinter;
+        public System.Windows.Forms.Button btnChoosePrinter;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView GridOfFiles;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Button btnClearGridOfFiles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateOfPrint;
+        public  System.IO.FileSystemWatcher fsw;
     }
 }
 
