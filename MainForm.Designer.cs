@@ -39,7 +39,6 @@
             this.btnChoosePrinter = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.GridOfFiles = new System.Windows.Forms.DataGridView();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnClearGridOfFiles = new System.Windows.Forms.Button();
             this.fsw = new System.IO.FileSystemWatcher();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbxScan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridOfFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fsw)).BeginInit();
@@ -159,21 +159,9 @@
             this.label2.Location = new System.Drawing.Point(16, 309);
             this.label2.MaximumSize = new System.Drawing.Size(330, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 34);
+            this.label2.Size = new System.Drawing.Size(153, 34);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Файлы для сканирования: \r\n*.doc, *.docx, *.pdf, *rtf.\r\n";
-            // 
-            // label4
-            // 
-            this.label4.AutoEllipsis = true;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label4.Location = new System.Drawing.Point(19, 364);
-            this.label4.MaximumSize = new System.Drawing.Size(330, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(279, 17);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Распечатанные файлы будут удаляться.\r\n";
+            this.label2.Text = "Файлы для печати: \r\n*.doc, *.docx, *.pdf, *rtf.\r\n";
             // 
             // label5
             // 
@@ -249,16 +237,26 @@
             this.fsw.SynchronizingObject = this;
             this.fsw.Created += new System.IO.FileSystemEventHandler(this.fsw_Created);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(186, 409);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(239, 13);
+            this.linkLabel1.TabIndex = 18;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/klevesenkov/PrintFromFolder";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 436);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnClearGridOfFiles);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.GridOfFiles);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbPrinter);
             this.Controls.Add(this.btnChoosePrinter);
@@ -296,7 +294,6 @@
         public System.Windows.Forms.Button btnChoosePrinter;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView GridOfFiles;
         private System.Windows.Forms.Label label6;
@@ -304,6 +301,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfPrint;
         public  System.IO.FileSystemWatcher fsw;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
