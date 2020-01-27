@@ -183,9 +183,9 @@
             this.label5.Location = new System.Drawing.Point(19, 410);
             this.label5.MaximumSize = new System.Drawing.Size(330, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 13);
+            this.label5.Size = new System.Drawing.Size(160, 13);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Copyright [2020] [ilya klevesenkov]";
+            this.label5.Text = "Copyright 2020 ilya klevesenkov";
             // 
             // GridOfFiles
             // 
@@ -275,7 +275,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(780, 475);
             this.Name = "MainForm";
-            this.Text = "Print from folder";
+            this.Text = "Print from folder v1.0";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxScan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridOfFiles)).EndInit();
