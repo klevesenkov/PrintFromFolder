@@ -37,7 +37,8 @@ namespace PrintFromFolder
             {
                 if (Scan.Path != null)
                 {
-                    if (Scan.PrinterName != null) Scan.Start(fsw);
+                    if (Scan.PrinterName != null) 
+                        Scan.Start(fsw);
                     else MessageBox.Show("Выберите принтер для печати", "Ошибка", MessageBoxButtons.OK);
                 }
                 else MessageBox.Show("Выберите папку для сканирования", "Ошибка", MessageBoxButtons.OK);
