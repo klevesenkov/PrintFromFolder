@@ -39,7 +39,6 @@
             this.btnChoosePrinter = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.GridOfFiles = new System.Windows.Forms.DataGridView();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateOfPrint = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,18 +162,6 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Файлы для печати: \r\n*.doc, *.docx, *.pdf, *rtf.\r\n";
             // 
-            // label5
-            // 
-            this.label5.AutoEllipsis = true;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label5.Location = new System.Drawing.Point(19, 410);
-            this.label5.MaximumSize = new System.Drawing.Size(330, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(160, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Copyright 2020 ilya klevesenkov";
-            // 
             // GridOfFiles
             // 
             this.GridOfFiles.AllowUserToAddRows = false;
@@ -240,7 +227,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(186, 409);
+            this.linkLabel1.Location = new System.Drawing.Point(19, 411);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(239, 13);
             this.linkLabel1.TabIndex = 18;
@@ -256,7 +243,6 @@
             this.Controls.Add(this.btnClearGridOfFiles);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.GridOfFiles);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbPrinter);
             this.Controls.Add(this.btnChoosePrinter);
@@ -294,7 +280,6 @@
         public System.Windows.Forms.Button btnChoosePrinter;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView GridOfFiles;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.Button btnClearGridOfFiles;

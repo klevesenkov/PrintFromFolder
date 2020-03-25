@@ -13,6 +13,7 @@ namespace PrintFromFolder
 {
     public partial class MainForm : Form
     {
+        // создаем объект для работы сканирования
         scan Scan = new scan();
 
         public MainForm()
@@ -29,6 +30,7 @@ namespace PrintFromFolder
 
         private void btnStartStopScan_Click(object sender, EventArgs e)
         {
+            // fsw - watcher
             if (Scan.ScanOn)
             {
                 Scan.Stop(fsw);                
@@ -87,6 +89,8 @@ namespace PrintFromFolder
                 Scan.PrinterName = lbPrinter.Text = printDialog1.PrinterSettings.PrinterName;
             }
         }
+
+        // функция, что должен делать watcher, если в папке появился файл
         private void fsw_Created(object sender, FileSystemEventArgs e)
         {
             GridOfFiles.Rows.Add(e.Name, DateTime.Now.ToString());

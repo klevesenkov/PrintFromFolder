@@ -10,15 +10,16 @@ namespace PrintFromFolder
 {
     class scan
     {
-        public bool ScanOn;
-        public string Path;
-        public string PrinterName;
+        public bool ScanOn; // флаг сканирования, если true, то идет сканирование
+        public string Path; // путь к папке, в которой происходит сканирование
+        public string PrinterName; // имя принтера 
 
+        // запуск watcher
         public void Start(FileSystemWatcher watcher)
         {
 
             try
-            {
+            {                
                 watcher.Path = Path;
                 watcher.EnableRaisingEvents = true;
                 ScanOn = true;
@@ -31,6 +32,7 @@ namespace PrintFromFolder
 
         }
 
+        // остановка watcher
         public void Stop(FileSystemWatcher watcher)
         {
             ScanOn = false;
