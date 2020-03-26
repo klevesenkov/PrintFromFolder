@@ -90,10 +90,17 @@ namespace PrintFromFolder
             }
         }
 
-        // функция, что должен делать watcher, если в папке появился файл
+        // событие, что должен делать watcher, если в папке появился файл
         private void fsw_Created(object sender, FileSystemEventArgs e)
         {
-            GridOfFiles.Rows.Add(e.Name, DateTime.Now.ToString());
+            // проверка расширения файла
+            // отправка файла на печать
+           // string extension = Path.GetExtension(e.Name);
+            // List<int> numbers = new List<int>() { 1, 2, 3, 45 };
+           // if (extension == ".pdf" || ".doc" || ".docx" || ".rtx")
+           // {
+           //     GridOfFiles.Rows.Add(e.Name, DateTime.Now.ToString());
+            //}
         }
 
         private void btnClearGridOfFiles_Click(object sender, EventArgs e)
