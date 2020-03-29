@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows.Forms;
 
 namespace PrintFromFolder
@@ -19,7 +14,7 @@ namespace PrintFromFolder
         {
 
             try
-            {                
+            {
                 watcher.Path = Path;
                 watcher.EnableRaisingEvents = true;
                 ScanOn = true;
@@ -42,5 +37,5 @@ namespace PrintFromFolder
 
     }
 
-    
+
 }

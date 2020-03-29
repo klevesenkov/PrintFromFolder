@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Printing;
 
 namespace PrintFromFolder
 {
@@ -27,7 +20,7 @@ namespace PrintFromFolder
 
 
         private void MainForm_Load(object sender, EventArgs e)
-        {            
+        {
             Scan.ScanOn = false;
             RePaint();
         }
@@ -37,13 +30,13 @@ namespace PrintFromFolder
             // fsw - watcher
             if (Scan.ScanOn)
             {
-                Scan.Stop(fsw);                
+                Scan.Stop(fsw);
             }
             else
             {
                 if (Scan.Path != null)
                 {
-                    if (Scan.PrinterName != null) 
+                    if (Scan.PrinterName != null)
                         Scan.Start(fsw);
                     else MessageBox.Show("Выберите принтер для печати", "Ошибка", MessageBoxButtons.OK);
                 }
@@ -79,7 +72,7 @@ namespace PrintFromFolder
             {
                 Scan.Stop(fsw);
                 RePaint();
-                Scan.Path=lblFolder.Text = FBD.SelectedPath;                
+                Scan.Path = lblFolder.Text = FBD.SelectedPath;
             }
         }
 
@@ -103,7 +96,7 @@ namespace PrintFromFolder
                 case ".doc": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
                 case ".docx": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
                 case ".rtf": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
-            };           
+            };
         }
 
         private void btnClearGridOfFiles_Click(object sender, EventArgs e)
@@ -112,5 +105,5 @@ namespace PrintFromFolder
         }
     }
 
-    
+
 }
