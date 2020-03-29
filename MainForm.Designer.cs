@@ -160,7 +160,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 34);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Файлы для печати: \r\n*.doc, *.docx, *rtf.\r\n";
+            this.label2.Text = "Файлы для печати: \r\n*.doc, *.docx, *.pdf \r\n";
             // 
             // GridOfFiles
             // 
