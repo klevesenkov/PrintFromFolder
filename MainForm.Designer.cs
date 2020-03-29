@@ -75,7 +75,7 @@
             // 
             // pbxScan
             // 
-            this.pbxScan.Image = global::PrintFromFolder.Properties.Resources.scan_off;
+            this.pbxScan.Image = ((System.Drawing.Image)(resources.GetObject("pbxScan.Image")));
             this.pbxScan.InitialImage = null;
             this.pbxScan.Location = new System.Drawing.Point(12, 12);
             this.pbxScan.Name = "pbxScan";
@@ -158,9 +158,9 @@
             this.label2.Location = new System.Drawing.Point(16, 309);
             this.label2.MaximumSize = new System.Drawing.Size(330, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 34);
+            this.label2.Size = new System.Drawing.Size(142, 34);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Файлы для печати: \r\n*.doc, *.docx, *.pdf, *rtf.\r\n";
+            this.label2.Text = "Файлы для печати: \r\n*.doc, *.docx, *rtf.\r\n";
             // 
             // GridOfFiles
             // 

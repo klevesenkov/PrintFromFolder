@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace PrintFromFolder
 {
@@ -15,6 +16,9 @@ namespace PrintFromFolder
     {
         // создаем объект для работы сканирования
         scan Scan = new scan();
+
+        // создаем объект для печати
+        print Print = new print();
 
         public MainForm()
         {
@@ -94,13 +98,13 @@ namespace PrintFromFolder
         private void fsw_Created(object sender, FileSystemEventArgs e)
         {
             // проверка расширения файла
-            // отправка файла на печать
-           // string extension = Path.GetExtension(e.Name);
-            // List<int> numbers = new List<int>() { 1, 2, 3, 45 };
-           // if (extension == ".pdf" || ".doc" || ".docx" || ".rtx")
-           // {
-           //     GridOfFiles.Rows.Add(e.Name, DateTime.Now.ToString());
-            //}
+            switch (Path.GetExtension(e.Name))
+            {
+                case ".doc": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
+                case ".docx": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
+                case ".rtf": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
+
+            };           
         }
 
         private void btnClearGridOfFiles_Click(object sender, EventArgs e)
