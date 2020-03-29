@@ -103,7 +103,6 @@ namespace PrintFromFolder
                 case ".doc": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
                 case ".docx": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
                 case ".rtf": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
-
             };           
         }
 

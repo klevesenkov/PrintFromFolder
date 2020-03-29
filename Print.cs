@@ -15,8 +15,7 @@ namespace PrintFromFolder
             //word.Visible = false;
             doc = word.Documents.Open(path+"\\"+name);
             doc.PrintOut();
-            dg.Rows.Add(name, DateTime.Now.ToString());
-            doc.Close();
+            //dg.Rows.Add(name, DateTime.Now.ToString());            
         }
     }
 }
