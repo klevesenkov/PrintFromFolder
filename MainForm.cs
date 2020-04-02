@@ -22,6 +22,7 @@ namespace PrintFromFolder
         private void MainForm_Load(object sender, EventArgs e)
         {
             Scan.ScanOn = false;
+            chbNotifyOn.Checked = false;
             RePaint();
         }
 
@@ -90,18 +91,53 @@ namespace PrintFromFolder
         // событие, что должен делать watcher, если в папке появился файл
         private void fsw_Created(object sender, FileSystemEventArgs e)
         {
-            // проверка расширения файла
+            // проверка расширения файла и печать
             switch (Path.GetExtension(e.Name))
             {
-                case ".doc": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
-                case ".docx": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles); break;
-                case ".pdf": Print.PrintPDF(Scan.Path, e.Name, this.GridOfFiles); break;
+                case ".doc": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles, this.notifyIcon, this.chbNotifyOn); break;
+                case ".docx": Print.PrintDOC(Scan.Path, e.Name, this.GridOfFiles, this.notifyIcon, this.chbNotifyOn); break;
+                case ".pdf": Print.PrintPDF(Scan.Path, e.Name, this.GridOfFiles, this.notifyIcon, this.chbNotifyOn); break;
             };
         }
 
         private void btnClearGridOfFiles_Click(object sender, EventArgs e)
         {
             GridOfFiles.Rows.Clear();
+        }
+             
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            // Если программу свернули, то убрать ее из панели задач и показать в трее иконку
+            if (WindowState == FormWindowState.Minimized)
+            {
+                ShowInTaskbar = false;
+                notifyIcon.Visible = true;
+                // задаем иконку всплывающей подсказки
+                notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+                // задаем текст подсказки
+                notifyIcon.BalloonTipText = "Нажмите правой кнопкой мыши по иконке для вызова меню.";
+                // устанавливаем зголовк
+                notifyIcon.BalloonTipTitle = "Программа свернулась в трей";
+                // отображаем подсказку 12 секунд
+                notifyIcon.ShowBalloonTip(12);
+            }
+            else
+            {
+                ShowInTaskbar = true;
+                notifyIcon.Visible = false;
+            }
+            //base.OnResize(e);
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Show_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
         }
     }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnStartStopScan = new System.Windows.Forms.Button();
             this.lbScanState = new System.Windows.Forms.Label();
@@ -46,9 +47,15 @@
             this.btnClearGridOfFiles = new System.Windows.Forms.Button();
             this.fsw = new System.IO.FileSystemWatcher();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Show = new System.Windows.Forms.ToolStripMenuItem();
+            this.chbNotifyOn = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxScan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridOfFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fsw)).BeginInit();
+            this.notifyMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStartStopScan
@@ -234,11 +241,53 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://github.com/klevesenkov/PrintFromFolder";
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.ContextMenuStrip = this.notifyMenuStrip;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Print from folder";
+            this.notifyIcon.Visible = true;
+            // 
+            // notifyMenuStrip
+            // 
+            this.notifyMenuStrip.AllowDrop = true;
+            this.notifyMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Exit,
+            this.Show});
+            this.notifyMenuStrip.Name = "notifyMenuStrip";
+            this.notifyMenuStrip.Size = new System.Drawing.Size(191, 48);
+            // 
+            // Exit
+            // 
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(190, 22);
+            this.Exit.Text = "Закрыть программу";
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // Show
+            // 
+            this.Show.Name = "Show";
+            this.Show.Size = new System.Drawing.Size(190, 22);
+            this.Show.Text = "Показать программу";
+            this.Show.Click += new System.EventHandler(this.Show_Click);
+            // 
+            // chbNotifyOn
+            // 
+            this.chbNotifyOn.AutoSize = true;
+            this.chbNotifyOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.chbNotifyOn.Location = new System.Drawing.Point(19, 365);
+            this.chbNotifyOn.Name = "chbNotifyOn";
+            this.chbNotifyOn.Size = new System.Drawing.Size(313, 17);
+            this.chbNotifyOn.TabIndex = 20;
+            this.chbNotifyOn.Text = "Всплывающие уведомления при свернутом приложении";
+            this.chbNotifyOn.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 436);
+            this.Controls.Add(this.chbNotifyOn);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnClearGridOfFiles);
             this.Controls.Add(this.label6);
@@ -256,14 +305,15 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(780, 475);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(780, 475);
             this.Name = "MainForm";
             this.Text = "Print from folder v1.0";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pbxScan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridOfFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fsw)).EndInit();
+            this.notifyMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,6 +337,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfPrint;
         public  System.IO.FileSystemWatcher fsw;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip notifyMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem Exit;
+        private System.Windows.Forms.ToolStripMenuItem Show;
+        private System.Windows.Forms.CheckBox chbNotifyOn;
     }
 }
 
